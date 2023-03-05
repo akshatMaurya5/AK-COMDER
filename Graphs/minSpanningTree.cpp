@@ -80,23 +80,25 @@ void kruksal(ll n, vector<node>&edges)
     sort(all(edges), cmp);
 
     DSU dsu(n);
-    ll cost=0;
+    ll cost = 0;
     vi mst;
-    for(auto &it:edges)
+    for (auto &it : edges)
     {
-        ll u=it.u;
-        ll v=it.v;
-        ll wt=it.wt;
+        ll u = it.u;
+        ll v = it.v;
+        ll wt = it.wt;
 
-        if(dsu.findParent(u)!=dsu.findParent(v))
+        if (dsu.findParent(u) != dsu.findParent(v))
         {
             mst.pb(it);
-            dsu.union(u,v);
-            cost+=wt;
+            dsu.union(u, v);
+            cost += wt;
         }
 
     }
-    deb(cost);
+    // deb(cost);
+
+    cout << cost << endl;
 }
 
 
