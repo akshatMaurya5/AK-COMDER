@@ -1,115 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-// given range L to R. Find the total numbers where digit d occurs k time
-/*
-To find answer we use the technique used in prefix sum
-
-we will find the numbers satisfying condition which are less than or equal to R --> ansR
-we will find the numbers satisfying condition which are less than or equal to L-1 --> ansL
-
-finalAnswer= ansR-ansL;
 
 
-now dp states -> idx flag and cnt are changing
-
-idx can go upto R ie for a number of 1e18 R will be 18
-flag will be of size 2
-cnt will be equal to size of idx --> ie when the whole number comprises of digit k -->(kkkkk..k)
-
-therefore size of dp will me [19][2][19]
-
-*/
-
-
-
-
-int l, r, d, k;
-
-int solve(int idx, int flag, int cnt, vector<int>&num)
-{
-	if (idx == num.size()) {
-		if (cnt == k) return 1;
-		else return 0;
-	}
-
-	int limit = num[idx];
-
-	// if flag==1 -=> then it means that the number is smaller and now i can fill digits upto 90
-
-	if (flag == 1) {
-		limit = 9;
-	}
-
-	int count = 0;
-
-	for (int digit = 0; digit <= limit; digit++)
-	{
-		if (flag == 1)
-		{
-			if (digit == d) {
-				count += solve(idx + 1, flag, cnt + 1, num);
-			}
-			else {
-				count += solve(idx + 1, flag, cnt, num);
-			}
-		}
-		else if (flag == 0)
-		{
-			if (digit == d)
-			{
-				if (digit < num[idx]) count += solve(idx + 1, 1, cnt + 1, num);
-				else count += solve(idx + 1, 0, cnt + 1, num);
-			}
-			else {
-				if (digit < num[idx]) count += solve(idx + 1, 1, cnt, num);
-				else count += solve(idx + 1, 0, cnt, num);
-			}
+void dfs(int node, stack<int> &st, vector<int> &vis, vector<int> adj[]) {
+	vis[node] = 1;
+	for (auto it : adj[node]) {
+		if (!vis[it]) {
+			dfs(it, st, vis, adj);
 		}
 	}
 
-	return count;
+	st.push(node);
 }
-
-vector<int>convertIntoDigits(int n)
-{
-	vector<int>ans;
-
-	while (n) {
-		ans.push_back(n % 10);
-		n /= 10;
+void revDfs(int node, vector<int> &vis, vector<int> transpose[]) {
+	cout << node << " ";
+	vis[node] = 1;
+	for (auto it : transpose[node]) {
+		if (!vis[it]) {
+			revDfs(it, vis, transpose);
+		}
 	}
-	reverse(ans.begin(), ans.end());
-	return ans;
 }
-
-void digitDP()
-{
-	cin >> l >> r >> d >> k;
-
-
-	//for RIGHT
-	vector<int>num = convertIntoDigits(r);
-	int ansR = solve(0, 0, 0, num);
-
-
-	//for LEFT
-	num = convertIntoDigits(l - 1);
-	int ansL = solve(0, 0, 0, num);
-
-
-	cout << ansR - ansL << endl;
-}
-
-
 int main()
 {
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
-	freopen("error.txt", "w", stderr);
 	freopen("output.txt", "w", stdout);
 #endif
 
-	digitDP();
+	int n = 6, m = 7;
+	vector<int> adj[n + 1];
+	adj[1].push_back(3);
+	adj[2].push_back(1);
+	adj[3].push_back(2);
+	adj[3].push_back(5);
+	adj[4].push_back(6);
+	adj[5].push_back(4);
+	adj[6].push_back(5);
+
+	stack<int> st;
+	vector<int> vis(n + 1, 0);
+	for (int i = 1; i <= n; i++) {
+		if (!vis[i]) {
+			dfs(i, st, vis, adj);
+		}
+	}
+
+	vector<int> transpose[n + 1];
+
+	for (int i = 1; i <= n; i++) {
+		vis[i] = 0;
+		for (auto it : adj[i]) {
+			transpose[it].push_back(i);
+		}
+	}
+
+	int sccCnt = 0;
+
+	while (!st.empty()) {
+		int node = st.top();
+		st.pop();
+		if (!vis[node]) {
+			sccCnt++;
+			cout << "SCC: ";
+			revDfs(node, vis, transpose);
+			cout << endl;
+		}
+
+
+	}
+	cout << "Total number of scc's are:" << sccCnt;
+
 
 	return 0;
 }
