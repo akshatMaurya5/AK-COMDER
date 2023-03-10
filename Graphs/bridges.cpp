@@ -1,5 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+/*
+low[node] = lower time of insertion of all adj. nodes exculding parent node
+we take the lowest time of the adj. node
+*/
+
+
 void dfs(int node, int parent, vector<int> &vis, vector<int> &tin, vector<int> &low, int &timer, vector<int> adj[])
 {
 	vis[node] = 1;
@@ -8,7 +15,6 @@ void dfs(int node, int parent, vector<int> &vis, vector<int> &tin, vector<int> &
 	for (auto it : adj[node])
 	{
 		if (it == parent) continue;
-
 
 		if (!vis[it])
 		{

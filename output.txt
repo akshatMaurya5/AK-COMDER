@@ -1,4 +1,1 @@
-SCC: 1 2 3 
-SCC: 5 6 4 
-
-Total number of scc's are:2
+AAACBCAAA

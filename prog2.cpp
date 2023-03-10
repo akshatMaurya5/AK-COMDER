@@ -1,34 +1,18 @@
-long long canComplete(vector<int>&time, int m)
-{
-    long long int totalTrips = 0;
+#include<bits/stdc++.h>
+using namespace std;
 
-    for (auto &it : time)
-    {
-        totalTrips += (m / it);
-    }
-    // cout<<totalTrips<<" ";
-    return totalTrips;
+const int MOD = 1e9 + 7;
+
+int main() {
+	int n;
+	cin >> n;
+
+	// Calculate 2^n modulo MOD using fast exponentiation
+	long long power = 1;
+	for (int i = 0; i < n; i++) {
+		power = (power * 2) % MOD;
+	}
+
+	cout << power << "\n";
+	return 0;
 }
-
-long long minimumTime(vector<int>& time, int totalTrips)
-{
-    long long int l = 1;
-    long long int h = 1e14;
-    long long ans;
-    while (l < h)
-    {
-        long long int mid = l + (h - l) / 2;
-        cout << l << endl;
-        if (canComplete(time, mid) >= totalTrips) {
-            ans = mid;
-            hi = mid - 1;
-            // h = mid;
-        }
-        else {
-            l = mid + 1;
-        }
-    }
-    return l;
-}
-
-

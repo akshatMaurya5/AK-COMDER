@@ -1,76 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-void dfs(int node, stack<int> &st, vector<int> &vis, vector<int> adj[]) {
-	vis[node] = 1;
-	for (auto it : adj[node]) {
-		if (!vis[it]) {
-			dfs(it, st, vis, adj);
-		}
-	}
-
-	st.push(node);
-}
-void revDfs(int node, vector<int> &vis, vector<int> transpose[]) {
-	cout << node << " ";
-	vis[node] = 1;
-	for (auto it : transpose[node]) {
-		if (!vis[it]) {
-			revDfs(it, vis, transpose);
-		}
-	}
-}
-int main()
-{
+int main() {
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif
 
-	int n = 6, m = 7;
-	vector<int> adj[n + 1];
-	adj[1].push_back(3);
-	adj[2].push_back(1);
-	adj[3].push_back(2);
-	adj[3].push_back(5);
-	adj[4].push_back(6);
-	adj[5].push_back(4);
-	adj[6].push_back(5);
+    string s;
+    cin >> s;
 
-	stack<int> st;
-	vector<int> vis(n + 1, 0);
-	for (int i = 1; i <= n; i++) {
-		if (!vis[i]) {
-			dfs(i, st, vis, adj);
-		}
-	}
+    unordered_map<char, int> freq;
+    for (char c : s) {
+        freq[c]++;
+    }
 
-	vector<int> transpose[n + 1];
-
-	for (int i = 1; i <= n; i++) {
-		vis[i] = 0;
-		for (auto it : adj[i]) {
-			transpose[it].push_back(i);
-		}
-	}
-
-	int sccCnt = 0;
-
-	while (!st.empty()) {
-		int node = st.top();
-		st.pop();
-		if (!vis[node]) {
-			sccCnt++;
-			cout << "SCC: ";
-			revDfs(node, vis, transpose);
-			cout << endl;
-		}
-
-
-	}
-	cout << "Total number of scc's are:" << sccCnt;
-
-
-	return 0;
+    string palindrome;
+    char single_char = '\0';
+    for (auto p : freq) {
+        char c = p.first;
+        int cnt = p.second;
+        if (cnt % 2 == 1) {
+            // We can place at most one character in the middle of the palindrome
+            if (s.size() % 2 == 0 || single_char != '\0') {
+                cout << "NO SOLUTION\n";
+                return 0;
+            }
+            single_char = c;
+            cnt--;
+        }
+        // Add half of the characters to the left and half to the right
+        for (int i = 0; i < cnt / 2; i++) {
+            palindrome += c;
+        }
+    }
+    // Construct the palindrome
+    cout << palindrome << single_char;
+    reverse(palindrome.begin(), palindrome.end());
+    cout << palindrome << "\n";
+    return 0;
 }
