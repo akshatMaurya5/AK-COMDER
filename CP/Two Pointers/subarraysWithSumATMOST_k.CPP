@@ -32,13 +32,16 @@ int main()
         j++;
     }
 
-    ll total = ((n) * (n + 1)) / 2;
-    // cout << total << line;
-    // cout << ans << line;
-    // return;
-    deb(total);
-    ll finalans = total - ans;
-    cout << finalans << line;
+    cout << ans << line;
+
+
+    //to find no. of subarrays with sum atleast K
+
+    // ll total = ((n) * (n + 1)) / 2;
+
+    // deb(total);
+    // ll finalans = total - ans;
+    // cout << finalans << line;
 
 
 
