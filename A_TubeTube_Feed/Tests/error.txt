@@ -1,1 +1,0 @@
-Command failed: "c:/Users/Dell/Desktop/COMDER/A_TubeTube_Feed/Tests/a.exe" 1 < "c:/Users/Dell/Desktop/COMDER/A_TubeTube_Feed/Tests/input_1.txt" > "c:/Users/Dell/Desktop/COMDER/A_TubeTube_Feed/Tests/code_output_1.txt"
