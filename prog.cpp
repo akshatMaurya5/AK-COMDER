@@ -1,5 +1,21 @@
-module MOORE_SD_101(
-    );
+#include<bits/stdc++.h>
+using namespace std;
 
+#define ll long long
 
-endmodule
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+
+    cout << "hello world\n";
+    ll x;
+    cin >> x;
+    cout << x << endl;
+    cout << "preemti is beri beri noob";
+
+    return 0;
+
+}
