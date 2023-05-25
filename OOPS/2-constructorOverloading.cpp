@@ -12,7 +12,7 @@ public:
 		marks = 69;
 	}
 
-	test(string sub, int _marks)
+	test(string sub="noob", int _marks)
 	{
 		course = sub;
 		marks = _marks;
@@ -30,14 +30,14 @@ public:
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("error.txt", "w", stderr);
-	freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+// 	freopen("input.txt", "r", stdin);
+// 	freopen("error.txt", "w", stderr);
+// 	freopen("output.txt", "w", stdout);
+// #endif
 
 	test test1;
-	test test2("dsd", 100);
+	test test2("", 100);
 
 	test1.print();
 	test2.print();
