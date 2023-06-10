@@ -1,15 +1,2 @@
-[v] = [{{"aba",2},{"ba",1}}]
-[j] = [0]
-[j] = [1]
-["mark", curr, j] = ["mark", "aba", 1]
-[j] = [2]
-[j] = [3]
-end 
-[j] = [0]
-["mark", curr, j] = ["mark", "ba", 0]
-[j] = [1]
-[j] = [2]
-[j] = [3]
-[j] = [4]
-end 
-vis : 1 1 1 0 0 0 
+[user] = [{{" david"," david123"}}]
+[user] = [{{" adam"," adam1"},{" david"," david123"}}]

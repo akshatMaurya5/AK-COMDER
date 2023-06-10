@@ -33,7 +33,7 @@ public:
         return parent[node] = findParent(parent[node]);
     }
 
-    void Union(int  u, int  v)
+    void unite(int  u, int  v)
     {
         int pu = findParent(u);
         int pv = findParent(v);

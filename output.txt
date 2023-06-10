@@ -1,0 +1,5 @@
+Registered succcessfully
+Registered succcessfully
+Logged in succcessfully
+Login Unsucessful.
+Logout succcessful.
