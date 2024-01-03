@@ -180,7 +180,7 @@ struct Update1 {
   }
 };
 
-//range in queries  with index
+//range min queries  with index
 //update-> update value to x
 
 void solve()
