@@ -8,7 +8,7 @@ using namespace std;
 
 class node {
 public:
-	int maxi, sum, suff, pref;
+	ll maxi, sum, suff, pref;
 
 	node(ll val)
 	{
