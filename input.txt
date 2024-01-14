@@ -1,13 +1,4 @@
-6
-5
-aaabc
-3
-acb
-3
-bac
-4
-zbca
-15
-czddeneeeemigec
-13
-cdefmopqsvxzz
+5 2
+5 -4 4 3 -5
+4 3
+3 -1

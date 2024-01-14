@@ -11,6 +11,11 @@ public:
 		build(0, 0, n - 1);
 	}
 
+	ll merge(ll l, ll r)
+	{
+		return min(l, r);
+	}
+
 	void build(ll idx, ll lo, ll hi)
 	{
 		if (lo == hi) {
@@ -45,6 +50,26 @@ public:
 		return merge(left, right);
 	}
 
+	/*
+		// if we want to find index
+		ll query(ll idx, ll lo, ll hi, ll x)
+		{
+			if (lo == hi) {
+				return lo;
+			}
+
+			ll mid = (lo + hi) >> 1;
+
+
+			//This if condition can be changed.
+			if (seg[2 * idx + 1] >= x) {
+				return query(2 * idx + 1, lo, mid, x);
+			}
+			else
+				return query(2 * idx + 2, mid + 1, hi, x);
+		}
+	*/
+
 	void update(ll idx, ll lo, ll hi, ll i, ll val)
 	{
 		if (lo == hi)
@@ -63,11 +88,6 @@ public:
 		seg[idx] = merge(seg[2 * idx + 1], seg[2 * idx + 2]);
 	}
 
-	ll merge(ll l, ll r)
-	{
-		return min(l, r);
-	}
-
 	void make_update(ll idx, ll val)
 	{
 		update(0, 0, n - 1, idx, val);
@@ -79,66 +99,3 @@ public:
 		return ans;
 	}
 };
-
-void solve()
-{
-	ll n;
-	cin >> n;
-	vi v(n);
-	cin >> v;
-
-	SEG seg(n, v);
-
-	// build(0, 0, n - 1, v);
-
-	ll q;
-	cin >> q;
-	// deb(seg);
-	while (q--)
-	{
-		ll type;
-		cin >> type;
-
-		if (type == 1)
-		{
-
-			ll l, r;
-			cin >> l >> r;
-
-			cout << seg.query(0, 0, n - 1, l, r) << line;
-		}
-		else {
-			ll i, val;
-			cin >> i >> val;
-
-			seg.update(0, 0, n - 1, i, val);
-			v[i] = val;
-		}
-	}
-}
-
-int main()
-{
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("error.txt", "w", stderr);
-	freopen("output.txt", "w", stdout);
-#endif
-
-	fio;
-	//srand(time(NULL));
-
-	ll t = 1;
-	// cin >> t;
-
-	deb(t);
-
-	while (t--)
-	{
-		solve();
-	}
-
-	// cerr << "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";
-
-	return 0;
-}
