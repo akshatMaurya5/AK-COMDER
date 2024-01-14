@@ -12,14 +12,7 @@ first 3 comes, update freq array/fenwick tree with -1 ==> [1 1 0]
 now all the number less than 3 are it's inversions i.e 1 and 2
 
 so for 3 the answer is 2
-
-
-
-
 */
-
-
-
 
 #include <bits/stdc++.h>
 using namespace std;
