@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define mod 1000000007
-#define ll long long
-
-using namespace std;
-
 ll compute_hash(const string &s, ll n) {
      ll hash = 0;
      ll prime = 31;
@@ -27,6 +20,7 @@ vector<ll>rabinKarp(string s, string pattern)
 
      // computing hash for the first window
      ll hash = compute_hash(s, n1);
+
      ll patternHash = compute_hash(pattern, n1);
 
      vector<ll> ans;
@@ -68,41 +62,4 @@ vector<ll>rabinKarp(string s, string pattern)
      }
 
      return ans;
-}
-
-void solve() {
-     string s, pattern;
-     cin >> s >> pattern;
-
-
-     vector<ll>ans = rabinKarp(s, pattern);
-
-
-     if (!ans.size()) {
-          cout << "Not Found\n";
-          return ;
-     }
-
-     cout << ans.size() << endl;
-     for (auto &it : ans) {
-          cout << it + 1 << " ";
-     }
-     cout << endl;
-}
-
-int main() {
-
-
-#ifndef ONLINE_JUDGE
-     freopen("input.txt", "r", stdin);
-     freopen("output.txt", "w", stdout);
-     freopen("error.txt", "w", stderr);
-#endif
-
-     ll t;
-     cin >> t;
-     while (t--)
-          solve();
-
-     return 0;
 }
