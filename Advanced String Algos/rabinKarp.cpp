@@ -47,10 +47,10 @@ vector<ll>rabinKarp(string s, string pattern)
           right++;
 
           hash = (hash + ((s[right] - 'a' + 1) * powers[right]) % mod) % mod;
-          hash = (hash + mod) % mod; // Ensure that the result is non-negative
+          hash = (hash + mod) % mod; 
 
           hash = (hash - ((s[left] - 'a' + 1) * powers[left]) % mod) % mod;
-          hash = (hash + mod) % mod; // Ensure that the result is non-negative
+          hash = (hash + mod) % mod; 
 
           left++;
 
