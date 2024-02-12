@@ -1,0 +1,40 @@
+0x1f9840a85d5af5bf1d1762f925bdaddc4201f984             //uniswap
+0x1f9840a85d5af5bf1d1762f925bdaddc4201f984            //v2
+0xd125a32332ead35e7b1E7A82332099b48B7Ee4ed           //uni
+0x22453Fb15757F2A8177880D8b8cf5144f07d1679          //uni
+0x9C33eaCc2F50E39940D3AfaF2c7B8246B681A374         //uni router
+0xbbEE07B3e8121227AfCFe1E2B82772246226128e        //vertex
+0x8254e5B75E154F780C806409c338c9d8D8D1cA81       //orca
+orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE     //orca
+0x92D6C1e31e14520e676a687F0a93788B716BEff5     //dYdX v4
+4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R  //raydium
+0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82   //pancake
+0x52a8845df664d76c69d2eea607cd793565af42b8  //apex
+0xD533a949740bb3306d119CC777fa900bA034cd52 //curve
+0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3//apx
+
+
+
+0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad //uniswap v3 contract address used as per uniswap api on graph protocol
+
+0x1111111254EEB25477B68fb85Ed929f73A960582 //1 inch aggregator --> iska data nahi hai on bigquery
+0xd47140F6Ab73f6d6B6675Fb1610Bb5E9B5d96FE5 //
+
+
+
+
+
+0x1c411e9a96e071241c2f21f7726b17ae89e3cab4c78be50e062b03a9fffbbad1
+V2 SYNC 
+
+0x6b75d8AF000000e20B7a7DDf000Ba900b4009A80
+v2 sender
+
+0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822
+v2 topics
+
+ 0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67
+ v3 topic
+ 
+ 0x6F1cDbBb4d53d226CF4B917bF768B94acbAB6168 --changes
+ v3 sender

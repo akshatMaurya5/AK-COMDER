@@ -26,6 +26,10 @@ vector<ll>rabinKarp(string s, string pattern)
      vector<ll> ans;
      if (hash == patternHash) {
           ans.push_back(0);
+
+          //can check like for first pattern, without this, getting WA on CSES
+          // if (s.substr(0, n1) == pattern) ans.push_back(0);
+
      }
 
      ll left = 0, right = n1 - 1;

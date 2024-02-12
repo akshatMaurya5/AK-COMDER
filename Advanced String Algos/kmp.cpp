@@ -1,64 +1,59 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define ll long long
-
-/*
-you are given a string and ranges l1, r1, l2, r2
-
-check if s(l1, r1) = s(l2, r2);
-
-i.e substring b/w these ranges are equal
-
-
-EXPLANATION:
-
-let prime taken be 31
-
-    0           1             2              3                 4
-s=" a           a             b              a                 a"
-   1x(31)^0    1x(31)^0+     1x(31)^0+      1x(31)^0+       1x(31)^0+
-               1X(31)^1      1X(31)^1       1X(31)^1        1X(31)^1
-                             2X(31)^2       2X(31)^2        2X(31)^2
-                                            1X(31)^3        1X(31)^3
-                                                            1x(31)^4
-
-
-we will make prefix of hash and solve the task
-
-let range be [0, 1]  [3, 4]
-
-till 1 => 1x(31)^0 + 1x(31)^1
-
-prefix till 2 ==>
-1x(31)^0+1x(31)^1+2x(31)^2
-
-when we minus
-
-after subtraction we get : 1x(31)^3 + 1x(31)^4 ;
-
-
-
-
-
-*/
-
-
-void solve()
+vector<long long>get_lps(string s)
 {
+    long long n = s.size();
+    vector<long long>lps(n, 0);
 
+    //prevLps is idx of lps array
+    long long prevLps = 0, i = 1;
+
+    while (i < n)
+    {
+        if (s[i] == s[prevLps]) {
+            lps[i] = prevLps + 1;
+            prevLps++;
+            i++;
+        }
+        else if (prevLps == 0) {
+            lps[i] = 0;
+            i++;
+        }
+        else {
+            prevLps = lps[prevLps - 1];
+        }
+    }
+    return lps;
 }
 
-int main()
+long long kmpSearch(string s, string pattern)
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
+    long long n = s.size(), m = pattern.size();
 
-    solve();
+    auto lps = get_lps(pattern);
 
-    return 0;
+
+    long long i = 0, j = 0, count = 0;
+    vector<long long>idx_found;
+
+    while (i < n) {
+        if (pattern[j] == s[i]) {
+            j++;
+            i++;
+        }
+
+        if (j == m) {
+            // Pattern found
+            count++;
+            idx_found.push_back(i - j);
+            j = lps[j - 1];
+        } else if (i < n && pattern[j] != s[i]) {
+            if (j != 0) {
+                j = lps[j - 1];
+            } else {
+                i++;
+            }
+        }
+    }
+
+    return count;
+
 }
-
-

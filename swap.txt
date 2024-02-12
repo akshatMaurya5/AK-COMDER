@@ -1,0 +1,41 @@
+for v3 
+TOPICS: ACC TO LOGS TABLE
+0x0000000000000000000000003fc91a3afd70395cd496c647d5a6cc9d4b2b7fad
+0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67 
+
+ACC TO DATA TABLE:
+0x0000000000000000000000003fc91a3afd70395cd496c647d5a6cc9d4b2b7fad AS SENDER /RECIPIENT
+
+
+
+for v2: 
+TOPICS: ACC TO LOGS TABLE
+0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822 
+
+
+
+
+
+WITH all_hashes AS (
+    SELECT transaction_hash, log_index FROM `smiling - cistern - 410913.FirstTry.2ndFebLogs`
+    UNION ALL
+    SELECT transaction_hash, log_index FROM `smiling - cistern - 410913.FirstTry.2ndFebData`
+)
+
+SELECT DISTINCT transaction_hash, log_index
+FROM (
+    SELECT transaction_hash, log_index FROM all_hashes
+    WHERE transaction_hash = "0x3be94e1263ba1e1d6920c33f11f06909d5f3ca07f4b7fa635902b06710db1503"
+)
+ORDER BY log_index;
+
+
+
+WITH all_hashes AS (
+    SELECT transaction_hash, log_index FROM `smiling - cistern - 410913.FirstTry.2ndFebLogs`
+    UNION ALL
+    SELECT transaction_hash, log_index FROM `smiling - cistern - 410913.FirstTry.2ndFebData`
+)
+
+SELECT transaction_hash, log_index FROM all_hashes where transaction_hash = "0x3be94e1263ba1e1d6920c33f11f06909d5f3ca07f4b7fa635902b06710db1503" order by log_index
+
