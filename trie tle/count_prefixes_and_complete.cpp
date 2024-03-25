@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 struct Node {
 	Node*arr[26];
 	int prefix = 0, complete = 0;
@@ -89,42 +86,3 @@ public:
 		return node->complete;
 	}
 };
-
-int main()
-{
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("error.txt", "w", stderr);
-	freopen("output.txt", "w", stdout);
-#endif
-
-	int q;
-	cin >> q;
-
-	Trie trie;
-
-	while (q--)
-	{
-		int t;
-		cin >> t;
-		string s;
-		cin >> s;
-
-		if (t == 1)
-		{
-			trie.insert(s);
-		}
-		else if (t == 2)
-		{
-			cout << trie.searchString(s) << endl;
-
-		}
-		else if (t == 3) {
-			cout << trie.searchPrefix(s) << endl;
-		}
-		else {
-			trie.delString(s);
-		}
-	}
-	return 0;
-}
